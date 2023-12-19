@@ -51,6 +51,31 @@ void displayMusicPlayerDashboard(MusicPlayerDashboard dashboard) {
 int main() {
     MusicPlayerDashboard myDashboard;
     initMusicPlayerDashboard(&myDashboard);
+
+    Song songs[10] = {
+    {"Song 1", "Artist 1", 240, "C:\\Users\\shubh\\Downloads\\CodingRelayRace\\Jam.mp3"},
+    {"Song 2", "Artist 2", 200, "C:\\Users\\shubh\\Downloads\\CodingRelayRace\\Numb.mp3"},
+    {"Song 3", "Artist 3", 300, "C:\\Users\\shubh\\Downloads\\CodingRelayRace\\Sweetchildomine.mp3"},
+    {"Song 4", "Artist 4", 220, "C:\\Users\\shubh\\Downloads\\CodingRelayRace\\TheRumbling.mp3"},
+    {"Song 5", "Artist 5", 260, "C:\\Users\\shubh\\Downloads\\CodingRelayRace\\Thriller.mp3"},
+    {"Song 6", "Artist 6", 280, "C:\\Users\\shubh\\Downloads\\CodingRelayRace\\UntilI Found You.mp3"},
+    {"Song 7", "Artist 7", 320, "C:\\Users\\shubh\\Downloads\\CodingRelayRace\\WeWillRockYou.mp3"},
+    {"Song 8", "Artist 8", 180, "C:\\Users\\shubh\\Downloads\\CodingRelayRace\\Beat It.mp3"},
+    {"Song 9", "Artist 9", 310, "C:\\Users\\shubh\\Downloads\\CodingRelayRace\\Billie Jean.mp3"},
+    {"Song 10", "Artist 10", 240, "C:\\Users\\shubh\\Downloads\\CodingRelayRace\\Cant HelpFalling In Love.mp3"},
+    };
+
+    int currentSongIndex = 0;  // Track index of the current song being played
+    char input;
+    while (input != 'Q' && input != 'q') {
+        displayMusicPlayerDashboard(myDashboard);
+        // Check if current song has finished playing
+        if (songHasFinishedPlaying()) {
+            currentSongIndex = (currentSongIndex + 1) % 10;  // Assuming 10 songs in the array
+            myDashboard.currentlyPlaying = songs[currentSongIndex];
+            // You may need additional logic to handle resetting the playback position, etc.
+        }
+    }
     
     Song playlist[10];
     // User input for 10 songs
